@@ -79,8 +79,7 @@ Match(), Expressão Regular RegExp()( https://developer.mozilla.org/pt-BR/docs/W
         /* .match(/[A-Z]/g)  - apenas letras maiusculas serão verificadas*/
         /* reduce() - referente o calculo do hash*/
         for (let [index, linha] of entradas.entries()) {
-            resultado += linha.match(/[A-Z]/g)
-                .reduce((valorAcc, curr, strIndex) => valorAcc + (parseInt(curr, 36) - 10) + index + strIndex, 0);
+            resultado += linha.match(/[A-Z]/g).reduce((valorAcc, curr, strIndex) => valorAcc + (parseInt(curr, 36) - 10) + index + strIndex, 0);
         }
         console.log(resultado);
     }
