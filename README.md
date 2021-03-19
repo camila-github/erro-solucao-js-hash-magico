@@ -1,7 +1,8 @@
-## Treinamento Digital Innovation One - Exercicio - Hash Magico
+## Exercicio - Hash Magico
 
 O exercicio publicado é referente ao treinamento do BOOTCAMP - Desenvolvedor NodeJS -  Resolvendo Algoritmos Com JavaScript.
 (https://digitalinnovation.one)
+
 
 #### Descrição do Desafio:
 
@@ -50,9 +51,6 @@ OSADOISAJDSAOIDJA |
 ASOIJDOSAJDASOIDJA |	
 
 
-
-
-
 #### Link Referência:
 https://github.com/trepichio/DIOBootcampNodejs-Desafios/blob/master/06-Resolvendo%20Algoritmos%20com%20JavaScript/Desafio-04.js
 
@@ -67,7 +65,32 @@ Match(), Expressão Regular RegExp()( https://developer.mozilla.org/pt-BR/docs/W
 
 
 ```javascript
-// SOLUCAO 1 
+//SOLUCAO 1
+const calcularHash = (entradas) => {
+    let resultado = 0
+    /* .match(/[A-Z]/g)  - apenas letras maiusculas serão verificadas*/
+    /* reduce() - referente o calculo do hash*/
+    for (let [index, linha] of entradas.entries()) {
+        resultado += linha.match(/[A-Z]/g)
+                        .reduce((valorAcc, curr, strIndex) => valorAcc + (parseInt(curr, 36) - 10) + index + strIndex, 0)
+    }
+    return resultado;
+}
+
+(function hashMagico(numEntrada) {
+    while (numEntrada--) {
+        entradas = []
+        numCasos = parseInt(gets());
+        /*Armazena as proximas linhas da entrada (gets()) no array*/
+        while (numCasos--) entradas = [...entradas, gets()];
+    
+    console.log(calcularHash(entradas));
+    }
+})(gets());
+
+
+
+// SOLUCAO 2 
 /* Usado função anonima */
 (function hashMagico(numEntrada) {
     while (numEntrada--) {
